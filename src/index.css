@@ -1,0 +1,351 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Tech Design Variables - Original */
+:root {
+  --deep-space-blue: #0D1117;
+  --night-purple: #18122B;
+  --neon-cyan: #00F5FF;
+  --energetic-magenta: #E600FF;
+  --near-white: #E6EDF3;
+  --light-gray: #8B949E;
+  --card-bg: rgba(22, 27, 34, 0.6);
+  --card-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  * {
+    border-color: theme(colors.border);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--deep-space-blue) 0%, var(--night-purple) 100%);
+    color: var(--near-white);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Exo 2', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .modern-button {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform;
+  }
+
+  .modern-button-primary {
+    background-color: var(--neon-cyan);
+    color: var(--deep-space-blue);
+  }
+
+  .modern-button-primary:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  }
+
+  .modern-button-secondary {
+    background-color: transparent;
+    color: var(--neon-cyan);
+    border: 2px solid var(--neon-cyan);
+  }
+
+  .modern-button-secondary:hover {
+    background-color: rgba(0, 245, 255, 0.1);
+  }
+
+  .modern-button-success {
+    background-color: #10B981;
+    color: var(--near-white);
+  }
+
+  .modern-button-success:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  }
+
+  .modern-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--near-white);
+    padding: 10px;
+  }
+
+  .modern-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--neon-cyan);
+  }
+
+  .modern-select {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--near-white);
+    padding: 10px;
+  }
+
+  .modern-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--neon-cyan);
+  }
+
+  .data-table {
+    @apply w-full overflow-hidden rounded-lg;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+  }
+
+  .data-table th {
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--neon-cyan);
+    font-weight: 600;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .data-table td {
+    color: var(--near-white);
+    padding: 10px 12px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .data-table tbody tr:hover {
+    background: rgba(0, 245, 255, 0.05);
+  }
+
+  /* Modal Styles - Modern Tech */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .modal-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    max-width: 95vw;
+    max-height: 90vh;
+    width: 1000px;
+    margin: 20px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--neon-cyan);
+    background: transparent;
+    color: var(--neon-cyan);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 18px;
+  }
+
+  .modal-close:hover {
+    background: var(--neon-cyan);
+    color: var(--deep-space-blue);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9) translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  /* Pagination Styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .pagination-button {
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--card-border);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--near-white);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .pagination-button:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--neon-cyan);
+  }
+
+  .pagination-button.active {
+    background: var(--neon-cyan);
+    color: var(--deep-space-blue);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+  }
+
+  .pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .pagination-info {
+    color: var(--light-gray);
+    font-size: 13px;
+    margin: 0 12px;
+    white-space: nowrap;
+  }
+
+  /* Info Cards */
+  .info-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .info-card-label {
+    color: var(--light-gray);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .info-card-value {
+    color: var(--neon-cyan);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* Toggle Data Table */
+  .data-table-container {
+    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .data-table-container.open {
+    max-height: 400px;
+    opacity: 1;
+    overflow-y: auto;
+  }
+
+  /* Planet Info */
+  .planet-info {
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .planet-info-text {
+    color: var(--neon-cyan);
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95vw;
+    max-height: 90vh;
+    margin: 10px;
+  }
+  
+  .modal-header {
+    padding: 16px 16px 12px;
+  }
+  
+  .modal-body {
+    padding: 16px;
+  }
+  
+  .glass-card {
+    padding: 16px;
+  }
+  
+  .pagination {
+    gap: 4px;
+  }
+  
+  .pagination-button {
+    min-width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
